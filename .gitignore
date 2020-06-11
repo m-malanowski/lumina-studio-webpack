@@ -1,0 +1,7 @@
+node_modules/
+theme/
+public/*
+!public/index.thml
+!public/agencja-interaktywna-realizacje.html
+!public/kontakt.html
+!public/sklepy-internetowe-sklepy-www.html

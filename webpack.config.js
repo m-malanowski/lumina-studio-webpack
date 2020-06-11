@@ -1,11 +1,23 @@
+var path = require('path');
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        common: './src/js/common.js'
+    },
+    output: {
+        path: __dirname + '/public',
+        publicPath: '/',
+        filename: '[name].bundle.js'
+    },
+    watch: true,
     module: {
         rules: [
             {
                 test: /\.(js)$/,
                 exclude: /node_modules/,
-                use: ["babel-loader"]
+                use: ["babel-loader"],
+                include: [
+                    path.resolve(__dirname, 'node_modules', '@dogstudio', 'highway')
+                ]
             },
             {
                 test: /\.(jpe?g|png|ico|gif|svg)$/,
@@ -27,7 +39,17 @@ module.exports = {
                      ]
             },
             {
-                test: /\.(scss)$/,
+                test: /\.(glb|gltf)$/,
+                use:
+                    [
+                        {
+                            loader: 'file-loader',
+
+                        }
+                    ]
+            },
+            {
+                test: [/\.(scss)$/, /\.(css)$/],
                 use: [
                     {
                         // Adds CSS to the DOM by injecting a `<style>` tag
@@ -57,14 +79,14 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['*', '.js']
-    },
-    output: {
-        path: __dirname + '/public',
-        publicPath: '/',
-        filename: 'bundle.js'
+        extensions: ['*', '.js'],
+        alias: {
+            'highway': 'build/highway.js'
+        },
     },
     devServer: {
-        contentBase: './public'
-    }
+        contentBase: './public',
+        watchContentBase: true
+    },
+    // target: 'node'
 };
