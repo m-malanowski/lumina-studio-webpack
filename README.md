@@ -2,6 +2,6 @@
 
 lumina.stuido website
 
-Technologies used: Webpack, THREE.js, GSAP, SCSS
+Technologies used: Webpack, Highway, THREE.js, GSAP, SCSS
 
 link: https://lumina.studio/
