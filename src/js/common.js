@@ -27,6 +27,7 @@ const fullMenu = document.querySelector('.full-menu');
 const menuItemB = document.querySelector('.b');
 const fullMenuItems = document.querySelectorAll('.full-menu-item a');
 const menuOutput = document.querySelector('.menu-big span');
+const htmlEl = document.getElementsByTagName('html')[0];
 
 fullMenuItems.forEach((item) => {
     item.addEventListener('mousemove', (e) =>{
@@ -45,6 +46,7 @@ fullMenuItems.forEach((item) => {
         setTimeout(() => {
             hamburgerMenu.classList.toggle('animate');
             fullMenu.classList.toggle('show');
+            htmlEl.classList.toggle('overflow-y');
         }, 500);
     });
 })
@@ -56,7 +58,6 @@ menuWrapper.addEventListener('click', () => {
 
     setTimeout(() => {
 
-        let htmlEl = document.getElementsByTagName('html')[0];
         htmlEl.classList.toggle('overflow-y');
 
         hamburgerMenu.classList.toggle('animate');
