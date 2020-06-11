@@ -153,8 +153,8 @@ class HomeRenderer extends Highway.Renderer {
         function render() {
             if(model){
                 model.rotation.y += 0.0001;
-                model.rotation.x += 0.0001;
-                model.rotation.z += 0.0001;
+                model.rotation.x += 0.0002;
+                model.rotation.z += -0.0001;
             }
 
             renderer.render( scene, camera );
