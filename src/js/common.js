@@ -55,6 +55,10 @@ menuWrapper.addEventListener('click', () => {
     transition.menuTransition();
 
     setTimeout(() => {
+
+        let htmlEl = document.getElementsByTagName('html')[0];
+        htmlEl.classList.toggle('overflow-y');
+
         hamburgerMenu.classList.toggle('animate');
         fullMenu.classList.toggle('show');
         menuItemB.classList.toggle('no-show');
@@ -73,9 +77,19 @@ const H = new Highway.Core({
     }
 });
 
+H.on('NAVIGATE_END', ({ from, to, location }) => {
+    // Analytics
+    if (typeof gtag !== 'undefined') {
+        // eslint-disable-next-line
+        gtag('config', 'UA-169184236-1', {
+            'page_path': location.pathname,
+            'page_title': to.page.title,
+            'page_location': location.href
+        });
+    }
+});
 
 
-//
-// window.oncontextmenu = function () {
-//     alert(':)')
-// }
+window.oncontextmenu = function () {
+    alert(':)')
+}

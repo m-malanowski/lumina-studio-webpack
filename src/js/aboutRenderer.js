@@ -6,6 +6,13 @@ class AboutRenderer extends Highway.Renderer {
 
     onEnter() {
 
+
+        let htmlEl = document.getElementsByTagName('html')[0];
+
+        if ( htmlEl.classList.contains('overflowY')  ){
+            htmlEl.style.overflowY = ('visible');
+        }
+
         const body = document.body,
             scrollWrap = document.getElementsByClassName("smooth-scroll-wrapper")[0],
             height = scrollWrap.getBoundingClientRect().height - 1,
@@ -31,12 +38,16 @@ class AboutRenderer extends Highway.Renderer {
 
         smoothScroll();
 
-        tm.staggerTo('.d', .8, {
-            delay: .4,
-            y: -50,
+        tm.set('.e', {opacity: 0});
+        tm.staggerFromTo('.e', 2.4, {
+            y: 300,
+            opacity: 0,
+            ease: Expo.easeInOut,
+        }, {
+            y: 10,
             opacity: 1,
             ease: Expo.easeInOut,
-        }, .2);
+        },.2);
 
     }
 

@@ -5,6 +5,14 @@ const tm = TweenMax
 class ContactRenderer extends Highway.Renderer {
 
     onEnter() {
+
+        let htmlEl = document.getElementsByTagName('html')[0];
+
+        if ( htmlEl.classList.contains('overflowY')  ){
+            htmlEl.style.overflowY = ('visible');
+        }
+
+
         let typeString = ['chcesz stworzyć coś ciekawego', 'masz pomysł', 'lubisz coś tam', 'bla bla bla'];
         let  i = 0;
         let count = 0

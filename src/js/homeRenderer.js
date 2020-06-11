@@ -10,25 +10,25 @@ import greek from '../assets/img/greek.glb';
 class HomeRenderer extends Highway.Renderer {
 
     onEnter() {
-        var dracoLoader = new DRACOLoader();
-        var gltfLoader = new GLTFLoader();
+        let dracoLoader = new DRACOLoader();
+        let gltfLoader = new GLTFLoader();
 
         (async () => {
             const res = await dracoLoader.setDecoderPath( 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/libs/draco/' );
         })();
 
-        var camera, scene, renderer;
-        var controls, model, pointLight2;
-        var mouse = {
+        let camera, scene, renderer;
+        let controls, model, pointLight2;
+        let mouse = {
             x: 0,
             y: 0
         };
-        var container = document.querySelector( '#container' );
+        let container = document.querySelector( '#container' );
 
         dracoLoader.setDecoderConfig({ type: 'js' });
         gltfLoader.setDRACOLoader(dracoLoader);
         gltfLoader.setDDSLoader( new DDSLoader() );
-        var loadStartTime = performance.now();
+        let loadStartTime = performance.now();
 
         gltfLoader.load(greek, function(geometry){
                 model = geometry.scene;
@@ -59,7 +59,6 @@ class HomeRenderer extends Highway.Renderer {
                 model.rotation.y += THREE.Math.degToRad(-6);
                 model.rotation.z += THREE.Math.degToRad(-1);
 
-
             },function(xhr) {
                 console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
             },
@@ -78,7 +77,7 @@ class HomeRenderer extends Highway.Renderer {
 
             scene = new THREE.Scene();
 
-            var pointLight = new THREE.DirectionalLight( 0xffffff, .2 );
+            let pointLight = new THREE.DirectionalLight( 0xffffff, .2 );
             pointLight.position.set(-3,1,-11);
 
             pointLight.castShadow = true;
@@ -93,7 +92,7 @@ class HomeRenderer extends Highway.Renderer {
 
             scene.add( pointLight );
 
-            pointLight2 = new THREE.PointLight( 0xffffff, .1, 10 );
+            pointLight2 = new THREE.PointLight( 0xffffff, .3, 10 );
             pointLight2.position.set(4,2,1);
 
             pointLight2.castShadow = true;
@@ -103,7 +102,6 @@ class HomeRenderer extends Highway.Renderer {
 
             pointLight2.shadow.mapSize.width = 1024;
             pointLight2.shadow.mapSize.height = 1024;
-
 
             scene.add( pointLight2 );
 
@@ -121,27 +119,23 @@ class HomeRenderer extends Highway.Renderer {
             container.appendChild( renderer.domElement );
             window.addEventListener( 'resize', onWindowResize, true );
 
-
         }
-
 
         function onMouseMove(e){
             e.preventDefault();
             mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
             mouse.y = - (e.clientY / window.innerHeight) * 2 + 1;
 
-            var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+            let vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
             vector.unproject(camera);
-            var dir = vector.sub(camera.position).normalize();
-            var distance = -camera.position.z / dir.z;
-            var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+            let dir = vector.sub(camera.position).normalize();
+            let distance = -camera.position.z / dir.z;
+            let pos = camera.position.clone().add(dir.multiplyScalar(distance));
             //mouseMesh.position.copy(pos);
 
             pointLight2.position.copy(new THREE.Vector3(pos.x, pos.y, pos.z + 3));
 
-
         }
-
 
         function onWindowResize() {
 
@@ -157,9 +151,13 @@ class HomeRenderer extends Highway.Renderer {
         }
 
         function render() {
+            if(model){
+                model.rotation.y += 0.00005;
+                model.rotation.x += 0.00005;
+                model.rotation.z += 0.00005;
+            }
 
             renderer.render( scene, camera );
-
         }
 
     }

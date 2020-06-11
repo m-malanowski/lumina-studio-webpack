@@ -37,12 +37,26 @@ export default class Transition{
         ease: Expo.easeInOut,
         opacity: 1
       });
-        tm.staggerTo('.d', .8, {
-            y: -50,
+        tm.staggerFromTo('.d', 2.4, {
+            y: 200,
+            opacity: 0,
+            ease: Expo.easeInOut,
+        }, {
+            y: 10,
             opacity: 1,
             ease: Expo.easeInOut,
-        }, .2);
+        },.2);
 
+        tm.staggerFromTo('.g', 2.4, {
+            y: 10,
+            opacity: 0,
+            ease: Expo.easeInOut,
+        }, {
+            delay: 1,
+            y: 0,
+            opacity: 1,
+            ease: Expo.easeInOut,
+        },.2);
 
     }
 
@@ -80,16 +94,16 @@ export default class Transition{
     menuItemsTween() {
         gs.to(fullMenuItems, 1, {
             delay: .1,
-            opacity: 1,
+            autoAlpha: 1,
             y: -20,
             stagger: {
                each: 0.3
             }
         })
         tm.to('.tween-to-show', .8, {
-            delay: .4,
+            delay: 1.2,
             y: -20,
-            opacity: 1,
+            autoAlpha: 1,
         })
     }
 

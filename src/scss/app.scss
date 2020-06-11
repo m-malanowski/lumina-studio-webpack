@@ -1,5 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 $enable-responsive-font-sizes: true;
+$break-medium: 768px;
+$break-small: 576px;
+$break-x-small: 380px;
+$break-large: 992px;
+$break-x-large: 1200px;
+
 @font-face {
   font-family: "Ogg";
   src: url("./../assets/fonts/ogg/Ogg Roman.ttf") format("truetype");
@@ -21,6 +27,9 @@ $enable-responsive-font-sizes: true;
 
 html{
   overflow-x: hidden;
+  &.overflow-y{
+    overflow-y: hidden;
+  }
 }
 
 body{
@@ -157,9 +166,22 @@ canvas{
 .d{
   opacity: 0;
 }
+.e{
+  opacity: 0;
+}
 
 .header-motto{
   padding-top: calc(4.0rem + 1vw);
+  position: relative;
+  h1{
+    font-size: calc(50px + (120 - 50) * ((100vw - 320px) / (1900 - 320)));
+    line-height: .9;
+    font-weight: 100;
+    font-family: var(--font-secondary);
+    //text-transform: uppercase;
+    text-transform: capitalize;
+  }
+
 }
 
 .header-motto > div:nth-child(1) {
@@ -180,6 +202,12 @@ canvas{
     display: inline-block;
   }
 }
+.header-motto > div:nth-child(4) {
+  overflow: hidden;
+  p{
+    display: inline-block;
+  }
+}
 
 .par{
   position: absolute !important;
@@ -196,25 +224,7 @@ canvas{
   flex-direction: row;
   justify-content: center;
 
-  h1{
-    //font-size: 5.0rem;
-    ////font-weight: bold;
-    //align-self: center;
-    //line-height: 1.0;
-    //font-weight: 100;
-    //font-size: 7.0rem;
-    //line-height: 1.0;
 
-    font-size: 7.0rem;
-    line-height: .9;
-    font-weight: 100;
-
-
-    font-family: var(--font-secondary);
-    //text-transform: uppercase;
-    //font-family: var(--font-secondary);
-    text-transform: capitalize;
-  }
   p {
     //max-width: 60%;
     font-size: 1.0rem;
@@ -267,25 +277,10 @@ canvas{
   p{
     font-size: 1.1rem;
   }
-  h1{
 
-    font-size: 7.0rem;
-    line-height: .9;
-    font-weight: 100;
-
-
-
-    //font-weight: 100;
-    //font-size: 5.0rem;
-    //line-height: 1.2;
-    //font-family: var(--font-secondary);
-    //span{
-    //  font-style: oblique;
-    //  font-family: var(--font-primary);
-    //}
-  }
   h2{
-    font-size: 3.0rem;
+    //font-size: 3.0rem;
+    font-size: calc(45px + (55 - 45) * ((100vw - 320px) / (1900 - 320)));
 
   }
  h4{
@@ -348,7 +343,7 @@ canvas{
   height: 100vh;
   display: flex;
   h1{
-    font-size: 4.0rem;
+    font-size: calc(45px + (70 - 45) * ((100vw - 320px) / (1900 - 320)));
     align-self: center;
     justify-content: center;
   }
@@ -368,14 +363,14 @@ canvas{
     position: relative;
     display: inline-block;
     outline: none;
-    opacity: 0;
+    visibility:hidden;
     &:hover{
       color: inherit;
     }
   }
 
 .tween-to-show{
-  opacity:0;
+  visibility:hidden;
 }
 .menu-big{
   position: absolute;
@@ -384,7 +379,8 @@ canvas{
   top: 77%;
 
   span{
-    font-size: 15.0rem;
+    font-size: calc(220px + (300 - 220) * ((100vw - 320px) / (1900 - 320)));
+
     z-index: -100;
     color: var(--color-text-secondary);
     opacity: .2;
@@ -534,10 +530,6 @@ canvas{
 ////Contact
 
 .contact-sec{
-  //height: 100vh;
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
   p{
     line-height: 1.9;
     color: var(--color-text-secondary);
@@ -560,7 +552,7 @@ canvas{
     display: inline-block;
     outline: none;
     font-family: var(--font-primary-thin);
-    font-size: 2.0rem;
+    font-size: 1.8rem;
     &:hover{
       color: var(--color-text);
     }
@@ -573,7 +565,7 @@ canvas{
 .contact-heading{
   padding-top: calc(15.0rem + 2vw);
   h1{
-    font-size: 2.0rem;
+    font-size: 3.0rem;
     line-height: 1.2;
     font-weight: 100;
     text-align: left;
@@ -768,9 +760,46 @@ canvas{
 
 ////Media queries
 
-//@media (max-width: ) {
-//
-//}
+@media (max-width: $break-x-large) {
 
+}
 
+@media (max-width: $break-small) {
+  .b{
+    visibility: hidden;
+  }
+}
 
+@media (max-width: $break-medium) {
+  .full-menu{
+    .row{
+      padding-top: calc(6.0rem + 2.2vw);
+      text-align: center !important;
+
+      div:nth-last-of-type(1){
+        text-align: center !important;
+      }
+    }
+  }
+
+  .contact-heading{
+    h1{
+      text-align: center !important;
+    }
+  }
+  .details{
+    text-align: center !important;
+  }
+}
+
+.credito{
+  p{
+    color: var(--color-text-secondary);
+    a{
+      color: var(--color-text-secondary);
+    }
+  }
+}
+.g{
+  opacity: 0;
+}
