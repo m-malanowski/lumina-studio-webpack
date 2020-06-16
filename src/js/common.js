@@ -43,6 +43,9 @@ fullMenuItems.forEach((item) => {
 
 fullMenuItems.forEach((item) => {
     item.addEventListener('click', () => {
+        const transition = new Transition();
+        transition.menuItemsTween();
+
         setTimeout(() => {
             hamburgerMenu.classList.toggle('animate');
             fullMenu.classList.toggle('show');
@@ -90,7 +93,8 @@ H.on('NAVIGATE_END', ({ from, to, location }) => {
     }
 });
 
+console.clear()
 
-window.oncontextmenu = function () {
-    alert(':)')
-}
+// window.oncontextmenu = function () {
+//     alert(':)')
+// }

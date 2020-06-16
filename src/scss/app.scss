@@ -7,10 +7,6 @@ $break-large: 992px;
 $break-x-large: 1200px;
 
 @font-face {
-  font-family: "Ogg";
-  src: url("./../assets/fonts/ogg/Ogg Roman.ttf") format("truetype");
-}
-@font-face {
   font-family: "Suisse-Regular";
   src: url("./../assets/fonts/suisse/Suisse Int'l Regular.otf") format("truetype");
 }
@@ -22,7 +18,12 @@ $break-x-large: 1200px;
 
 @font-face {
   font-family: "Schnyder-Light";
-  src: url("./../assets/fonts/schnyder/Schnyder L Light.otf") format("truetype");
+  src: url("./../assets/fonts/schnyder/Schnyder L Demi.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Schnyder-Bold";
+  src: url("./../assets/fonts/schnyder/Schnyder L Bold.otf") format("truetype");
 }
 
 html{
@@ -42,19 +43,20 @@ body{
   //VARS
   --color-text: #fefefe;
   --color-text-secondary: #696666;
-  --canvas-backround: radial-gradient(circle, rgba(25,25,25,1) 0%, rgba(5,1,1,1) 40%);
-  //--canvas-backround: red;
+  --canvas-backround: radial-gradient(circle, rgba(55,55,55,1) 0%, rgba(5,1,1,1) 40%);
   --background: #050101;
   --font-primary: Suisse-Regular;
   --font-primary-thin: Suisse-Thin;
   --font-secondary: Ogg;
-  --font-third: Schnyder-Light;
+  --font-third-light: Schnyder-Light;
+  --font-third-Bold: Schnyder-Bold;
   --bar-width: 40px;
   --bar-height:1px;
   --bar-spacing: 10px;
 }
 h1,h2,h3,h4,h5{
-  font-family: var(--font-secondary);
+  font-family: var(--font-third-light);
+  line-height: 1;
 }
 a{
   color: var(--color-text);
@@ -174,10 +176,10 @@ canvas{
   padding-top: calc(4.0rem + 1vw);
   position: relative;
   h1{
-    font-size: calc(50px + (120 - 50) * ((100vw - 320px) / (1900 - 320)));
-    line-height: .9;
-    font-weight: 100;
-    font-family: var(--font-secondary);
+    font-size: calc(50px + (140 - 50) * ((100vw - 320px) / (1900 - 320)));
+    line-height: .8;
+    font-weight: bold;
+    font-family: var(--font-third-Bold);
     //text-transform: uppercase;
     text-transform: capitalize;
   }
@@ -204,6 +206,12 @@ canvas{
 }
 .header-motto > div:nth-child(4) {
   overflow: hidden;
+  h1{
+    display: inline-block;
+  }
+}
+.header-motto > div:nth-child(5) {
+  overflow: hidden;
   p{
     display: inline-block;
   }
@@ -223,6 +231,7 @@ canvas{
   align-items: center;
   flex-direction: row;
   justify-content: center;
+
 
 
   p {
@@ -270,16 +279,16 @@ canvas{
   }
 }
 .about-heading{
-  padding-top: calc(10.0rem + 2vw);
+  padding-top: calc(4.0rem + 2vw);
   .down{
     padding-top: calc(1.0rem + 2vw);
   }
   p{
     font-size: 1.1rem;
+    line-height: 1.8;
   }
 
   h2{
-    //font-size: 3.0rem;
     font-size: calc(45px + (55 - 45) * ((100vw - 320px) / (1900 - 320)));
 
   }
@@ -308,7 +317,7 @@ canvas{
     }
     span:nth-last-of-type(1){
       float: right;
-      font-family: var(--font-secondary);
+      font-family: var(--font-third-Bold);
       color: var(--color-text);
       font-size: 1.4rem;
     }
@@ -322,13 +331,12 @@ canvas{
       background: var(--color-text-secondary);
     }
   }
-
   img{
     width: 100%;
     height: auto;
     //position: absolute;
     //margin-top: -25rem;
-    z-index: -10;
+    //z-index: -10;
     opacity: .79;
   }
 }
@@ -364,6 +372,7 @@ canvas{
     display: inline-block;
     outline: none;
     visibility:hidden;
+    line-height: normal;
     &:hover{
       color: inherit;
     }
@@ -376,15 +385,14 @@ canvas{
   position: absolute;
   //left: 20%;
   left: -2%;
-  top: 77%;
+  top: 72%;
 
   span{
     font-size: calc(220px + (300 - 220) * ((100vw - 320px) / (1900 - 320)));
-
     z-index: -100;
     color: var(--color-text-secondary);
     opacity: .2;
-    font-family: var(--font-secondary);
+    font-family: var(--font-third-Bold);
     font-weight: bold;
   }
 }
@@ -396,7 +404,7 @@ canvas{
     }
   }
   h1{
-    font-size: 3.0rem;
+    font-size: calc(30px + (50 - 30) * ((100vw - 320px) / (1900 - 320)));
   }
   p{
     font-size: 1.1rem;
@@ -436,14 +444,17 @@ canvas{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: var(--font-secondary);
-    font-size: 2.0rem;
+    font-family: var(--font-third-light);
     line-height: 1.2;
     font-weight: 100;
     text-align: center;
     //text-transform: uppercase;
     color: var(--color-text);
     z-index: 2;
+    h1{
+      font-size: calc(25px + (40 - 25) * ((100vw - 320px) / (1900 - 320)));
+    }
+
   }
 
   .pics-container {
@@ -530,8 +541,13 @@ canvas{
 ////Contact
 
 .contact-sec{
+  background: url("../assets/img/main2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  margin-bottom: -15px;
   p{
-    line-height: 1.9;
+    line-height: 1.8;
     color: var(--color-text-secondary);
   }
   ul{
@@ -559,7 +575,7 @@ canvas{
   }
 }
 .details{
-  padding-top: calc(1.0rem + 2vw);
+  padding-top: calc(4.0rem + 2vw);
 
 }
 .contact-heading{
@@ -571,19 +587,17 @@ canvas{
     text-align: left;
   }
 }
-  .cred{
-    position: absolute;
-    bottom: 5%;
-    //left: 45%;
+.credito{
+  //position: absolute;
+  bottom: 1.0rem;
+  padding-top: 6.0rem;
+  p{
     color: var(--color-text-secondary);
     a{
       color: var(--color-text-secondary);
     }
   }
-
-
-
-
+}
 
 ////Helpers
 .hr-grey{
@@ -613,6 +627,17 @@ canvas{
   color: var(--color-text) !important;
 }
 
+.transparent-fill {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: var(--color-text);
+  //font-style: oblique;
+  &-1px {
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--color-text);
+  }
+}
 
 //////////////////
 .marquee {
@@ -769,6 +794,11 @@ canvas{
     visibility: hidden;
   }
 }
+@media (max-width: $break-large) {
+  .down{
+    margin-left: 15px;
+  }
+}
 
 @media (max-width: $break-medium) {
   .full-menu{
@@ -780,7 +810,15 @@ canvas{
         text-align: center !important;
       }
     }
+    .m-noshow{
+    display: none;
+    }
   }
+
+  .down{
+    margin-top: 300px !important;
+  }
+
 
   .contact-heading{
     h1{
@@ -802,4 +840,45 @@ canvas{
 }
 .g{
   opacity: 0;
+}
+
+.greekMobile{
+  width: 100%;
+  height: auto;
+  //max-width: 700px;
+  position: absolute;
+  margin-left: -15px;
+  opacity: .2;
+
+}
+
+
+//// LINK ///
+
+.link--arrowed {
+  display: inline-block;
+  height: 2rem;
+  line-height: 2rem;
+}
+.link--arrowed .arrow-icon {
+  position: relative;
+  top: -1px;
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  vertical-align: middle;
+}
+.link--arrowed .arrow-icon--circle {
+  -webkit-transition: stroke-dashoffset .3s ease;
+  transition: stroke-dashoffset .3s ease;
+  stroke-dasharray: 95;
+  stroke-dashoffset: 0;
+}
+.link--arrowed:hover .arrow-icon {
+  -webkit-transform: translate3d(5px, 0, 0);
+  transform: translate3d(5px, 0, 0);
+}
+.link--arrowed:hover .arrow-icon--circle {
+  stroke-dashoffset: 95;
 }

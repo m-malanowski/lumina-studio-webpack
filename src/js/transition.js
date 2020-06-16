@@ -1,7 +1,19 @@
-import {Expo, TweenMax, gsap} from 'gsap';
+import {Expo, TweenMax,  TimelineMax} from 'gsap';
 const tm = TweenMax;
-const fullMenuItems = document.querySelectorAll('.full-menu-item a');
-const gs = gsap;
+const fullMenuItems = document.querySelectorAll('.fmi');
+const canvas = document.getElementsByTagName('canvas');
+const greekMobile = document.querySelector('.greekMobile');
+const tl = new TimelineMax();
+const t = tl.staggerFromTo(fullMenuItems, 1.2, {
+    y: 20,
+    autoAlpha: 0,
+},
+    {
+        y: 0,
+        autoAlpha: 1,
+        ease: Expo.easeInOut,
+    }, .1).reversed(true);
+
 
 export default class Transition{
     constructor(duration = 1.2) {
@@ -32,11 +44,20 @@ export default class Transition{
 
 
     animationAfterLoad() {
-        tm.to('canvas', 2, {
-        x: 40,
-        ease: Expo.easeInOut,
-        opacity: 1
-      });
+        if(canvas){
+            tm.to(canvas, 2, {
+                x: 40,
+                ease: Expo.easeInOut,
+                opacity: 1
+            });
+        }
+        // if(greekMobile){
+            tm.to('.greekMobile', 3, {
+                ease: Expo.easeInOut,
+                opacity: .8
+            });
+        // }
+
         tm.staggerFromTo('.d', 2.4, {
             y: 200,
             opacity: 0,
@@ -92,21 +113,8 @@ export default class Transition{
     }
 
     menuItemsTween() {
-        gs.to(fullMenuItems, 1, {
-            delay: .1,
-            autoAlpha: 1,
-            y: -20,
-            stagger: {
-               each: 0.3
-            }
-        })
-        tm.to('.tween-to-show', .8, {
-            delay: 1.2,
-            y: -20,
-            autoAlpha: 1,
-        })
+        t.reversed( !t.reversed() );
     }
-
 
 }
 

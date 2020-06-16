@@ -5,6 +5,8 @@ const tm = TweenMax
 class ContactRenderer extends Highway.Renderer {
 
     onEnter() {
+        const body = document.body;
+        body.style.height = '100%';
 
         let htmlEl = document.getElementsByTagName('html')[0];
 
@@ -13,7 +15,7 @@ class ContactRenderer extends Highway.Renderer {
         }
 
 
-        let typeString = ['chcesz stworzyć coś ciekawego', 'masz pomysł', 'lubisz coś tam', 'bla bla bla'];
+        let typeString = ['chcesz stworzyć coś ciekawego', 'masz pomysł', 'cenisz sobie elegancję'];
         let  i = 0;
         let count = 0
         let selectedText = '';
@@ -67,12 +69,12 @@ class ContactRenderer extends Highway.Renderer {
         }
         type();
 
-        tm.staggerTo('.d', 1.2, {
+        tm.staggerTo('.f', 1.2, {
             delay: .6,
-            y: -50,
+            y: -20,
             opacity: 1,
             ease: Expo.easeInOut,
-        }, .4);
+        }, .1);
 
     }
 
