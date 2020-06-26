@@ -46,6 +46,7 @@ export default class Transition{
     animationAfterLoad() {
         if(canvas){
             tm.to(canvas, 2, {
+                delay: 1.8,
                 x: 40,
                 ease: Expo.easeInOut,
                 opacity: 1
@@ -63,7 +64,7 @@ export default class Transition{
             opacity: 0,
             ease: Expo.easeInOut,
         }, {
-            y: 10,
+            y: 0,
             opacity: 1,
             ease: Expo.easeInOut,
         },.2);

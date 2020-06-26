@@ -1,10 +1,14 @@
 import Highway from '@dogstudio/highway';
 import { Expo, TweenMax } from "gsap";
 const tm = TweenMax
-
+import fot3 from '../assets/img/j.jpg';
 class ContactRenderer extends Highway.Renderer {
 
     onEnter() {
+        let fotImg3 = document.querySelector('.fot3');
+        fotImg3.src = fot3;
+
+
         const body = document.body;
         body.style.height = '100%';
 
@@ -15,7 +19,28 @@ class ContactRenderer extends Highway.Renderer {
         }
 
 
-        let typeString = ['chcesz stworzyć coś ciekawego', 'masz pomysł', 'cenisz sobie elegancję'];
+        // const scrollWrap = document.getElementsByClassName("smooth-scroll-wrapper")[0],
+        //     height = scrollWrap.getBoundingClientRect().height - 1,
+        //     width = scrollWrap.getBoundingClientRect().width - 1,
+        //     speed = 0.02;
+        //
+        // let offset = 0;
+        //
+        // body.style.height = Math.floor(height) + "px";
+        // body.style.width = Math.floor(width) + "px";
+        //
+        // const smoothScroll = function() {
+        //     offset += (window.pageYOffset - offset) * speed;
+        //
+        //     let scroll = "translateY(-" + offset + "px) translateZ(0)";
+        //     scrollWrap.style.transform = scroll;
+        //
+        //     requestAnimationFrame(smoothScroll);
+        // }
+
+        // smoothScroll();
+
+        let typeString = ['chcesz stworzyć coś fajnego', 'masz pomysł', 'cenisz sobie elegancję'];
         let  i = 0;
         let count = 0
         let selectedText = '';
@@ -69,23 +94,18 @@ class ContactRenderer extends Highway.Renderer {
         }
         type();
 
-        tm.staggerTo('.f', 1.2, {
-            delay: .6,
-            y: -20,
+        tm.set('.e', {opacity: 0});
+        tm.staggerFromTo('.e', 2.4, {
+            y: 300,
+            opacity: 0,
+            ease: Expo.easeInOut,
+        }, {
+            y: 10,
             opacity: 1,
             ease: Expo.easeInOut,
-        }, .1);
-
+        },.2);
     }
 
-
-    onLeave() {
-    }
-    onEnterCompleted() {
-
-    }
-    onLeaveCompleted() {
-     }
 }
 
 export default ContactRenderer;

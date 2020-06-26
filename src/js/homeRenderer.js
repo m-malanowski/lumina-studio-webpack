@@ -1,7 +1,7 @@
 import Highway from '@dogstudio/highway';
 import HomeScene from './homeScene';
 const homeScene = new HomeScene();
-
+import CircleType from 'circletype';
 
 class HomeRenderer extends Highway.Renderer {
 
@@ -19,6 +19,11 @@ class HomeRenderer extends Highway.Renderer {
             homeScene.init();
             homeScene.animate()
         }
+
+        const circleType = new CircleType(
+            document.getElementById("rotated")
+        ).radius(80);
+
     }
 
 }

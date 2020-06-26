@@ -1,14 +1,20 @@
 import Highway from '@dogstudio/highway';
 import {Expo, TweenMax} from "gsap";
 const tm = TweenMax;
-    import fot1 from '../assets/img/glitch6.jpg';
+import fot1 from '../assets/img/e.jpg';
+import fot2 from '../assets/img/i.jpg';
+
 
 class AboutRenderer extends Highway.Renderer {
 
     onEnter() {
         let fotImg1 = document.querySelector('.fot1');
         fotImg1.src = fot1;
-        let down = document.querySelector('.down');
+
+        let fotImg2 = document.querySelector('.fot2');
+        fotImg2.src = fot2;
+        //
+        // let down = document.querySelector('.down');
 
         let htmlEl = document.getElementsByTagName('html')[0];
 
@@ -24,7 +30,7 @@ class AboutRenderer extends Highway.Renderer {
 
         let offset = 0;
 
-        body.style.height = Math.floor(height) + "px";
+        body.style.height = Math.floor(height) + 250 + "px";
         body.style.width = Math.floor(width) + "px";
 
         // console.log(body.style.height);
@@ -51,7 +57,7 @@ class AboutRenderer extends Highway.Renderer {
         window.addEventListener("optimizedScroll", () => {
             let height = 0.05 * (window.pageYOffset);
 
-            down.style.transform = "translateY(-" + height + "px)";
+            // down.style.transform = "translateY(-" + height + "px)";
             fotImg1.style.transform = "translateY(+" + height + "px)";
         });
 

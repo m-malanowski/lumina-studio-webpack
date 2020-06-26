@@ -17,6 +17,7 @@
     "@dogstudio/highway": "^2.2.1",
     "@panzoom/panzoom": "^4.1.0",
     "bootstrap": "^4.4.1",
+    "circletype": "^2.3.0",
     "gsap": "^3.3.1",
     "jquery": "^3.4.1",
     "nunjucks": "^3.2.1",
