@@ -1,6 +1,6 @@
 # lumina-studio-webpack
 
-lumina.stuido website
+lumina.studio website
 
 Technologies used: Webpack, Highway, THREE.js, GSAP, SCSS
 
